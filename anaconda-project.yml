@@ -1,0 +1,99 @@
+name: Multienvs Project
+
+description: A template project to demonstrate multiple envs, with Julia, Python2 and Python3, doc limitations, workarounds and git operations with AE5
+
+
+platforms:
+  - linux-64
+
+commands: 
+  Multiple-env-nb:
+    notebook: "Working With Multiple Envs.ipynb"
+    supports_http_options: true
+    env_spec: py37
+
+  panel:
+    unix: panel serve distribution_tabs.ipynb --port 8086 --allow-websocket-origin=*.ae54en.demo.anaconda.com
+    env_spec: anaconda201908_py37
+  
+  py27-nb:
+    notebook: Python2.ipynb
+    env_spec: py27
+  
+  julia-nb:
+    notebook: Julia.ipynb
+    env_spec: Julia
+  
+  py37-nb:
+    notebook: Python2.ipynb
+    
+  server-py36:
+    unix: bash sample_proxy/server.sh
+    env_spec: py36
+
+  server-py27:
+    unix: bash sample_proxy/server.sh
+    env_spec: py27
+  
+  server-py37:
+    unix: bash sample_proxy/server.sh
+    env_spec: py37
+    
+  server-anaconda201908_py37:
+    unix: bash sample_proxy/server.sh
+    env_spec: anaconda201908_py37
+    
+  server-Julia:
+    unix: bash sample_proxy/server.sh
+    env_spec: Julia
+    
+env_specs:
+  py36:
+    packages:
+    - python=3.6.3
+    - notebook
+    channels: []
+
+  
+  py27: 
+    packages:
+    - python=2.7
+    - numpy
+    - notebook
+    channels: []
+    
+  Julia:
+    packages:
+    - julia
+    - jupyter_client
+    channels:
+    - https://conda.anaconda.org/conda-forge
+
+  py37:
+    packages: 
+    - python=3.7 
+    - pip 
+    - notebook 
+    - numpy 
+    - scikit-image 
+    - scipy 
+    - pandas 
+    - requests 
+    - ipywidgets 
+    - bqplot 
+    - ipyvolume 
+    - ipyleaflet 
+    - pythreejs 
+    - ipyevents 
+    - ipysheet 
+    - ipytree 
+    - ipympl 
+    - pywwt 
+    - voila=0.1 
+    - jupyterlab 
+    - nodejs=11.14
+    channels:
+    - https://conda.anaconda.org/conda-forge
+    
+  anaconda201908_py37: {}
+  
