@@ -1,0 +1,10 @@
+# configue git cli to use stored credentials
+git config --global credential.helper 'store --file ../config/git-credentials'
+
+# git comletion
+source <(curl -s -L https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash )
+
+# git checkout -b feature1
+# echo test > test && git add test
+
+
