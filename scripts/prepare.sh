@@ -1,4 +1,7 @@
 # update anaconda-project and prepare all envs
+
+scripts=~/project/scripts
+
 setup() {
   conda update anaconda-project -y && anaconda-project prepare --all
   source ~/.bashrc
@@ -66,3 +69,13 @@ rename_kernels_to_envs() {
  foreach_env rename_kernelspec
 }
 
+if [[ $1 == "all" ]]; then 
+  setup 
+  install_julia_kernel
+  rename_kernels_to_envs
+  source $scripts/prepare_git.sh
+elif [[ $1 == "setup" ]]; then
+  setup
+elif [[ $1 == "git" ]]; then
+  source scripts/prepare_git.sh
+fi
